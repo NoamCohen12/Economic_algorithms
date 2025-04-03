@@ -25,31 +25,47 @@ python algo_EX3.py
 
 ## 📊 Output Summary
 
-Below are the results for five different economic scenarios, including allocations, equilibrium prices, and player utilities.
+Below are the results for five different economic scenarios, including inputs, allocations, equilibrium prices, and player utilities.
 
 ---
 
 ### ✅ Example 1 - Original
 
+**Inputs:**
+```python
+values = [
+    [8, 4, 2],
+    [2, 6, 5],
+    [1, 3, 7]
+]
+budgets = [60, 40, 30]
+supply  = [1, 1, 1]
+```
+
 **Allocation Matrix:**
 ```
-          R 1  R 2  R 3
 Player 1 :  1.00  0.00  0.00
 Player 2 :  0.00  1.00  0.06
 Player 3 :  0.00  0.00  0.94
 ```
 
-**Resource Prices:**  
-R1: 59.9996, R2: 38.1816, R3: 31.8180
-
-**Utility per Player:**  
-P1: 8.0000, P2: 6.2857, P3: 6.6000
+**Prices:** 59.9996, 38.1816, 31.8180  
+**Utilities:** 8.0000, 6.2857, 6.6000
 
 ---
 
 ### ✅ Example 2 - Distinct Preferences
 
-Each player values a different resource most.
+**Inputs:**
+```python
+values = [
+    [10, 2, 1],
+    [1, 9, 1],
+    [1, 1, 10]
+]
+budgets = [60, 40, 30]
+supply  = [1, 1, 1]
+```
 
 **Allocation Matrix:**
 ```
@@ -65,7 +81,16 @@ Player 3 :  0.00  0.00  1.00
 
 ### ✅ Example 3 - Overlapping Preferences
 
-Players have similar preferences and equal budgets.
+**Inputs:**
+```python
+values = [
+    [5, 3, 2],
+    [4, 4, 2],
+    [3, 2, 5]
+]
+budgets = [100, 100, 100]
+supply  = [1, 1, 1]
+```
 
 **Allocation Matrix:**
 ```
@@ -81,7 +106,16 @@ Player 3 :  0.00  0.00  1.00
 
 ### ✅ Example 4 - Wealthy Player
 
-One player has a much higher budget.
+**Inputs:**
+```python
+values = [
+    [6, 6, 6],
+    [1, 5, 3],
+    [2, 2, 8]
+]
+budgets = [200, 50, 50]
+supply  = [1, 1, 1]
+```
 
 **Allocation Matrix:**
 ```
@@ -97,7 +131,16 @@ Player 3 :  0.00  0.00  0.50
 
 ### ✅ Example 5 - Identical Preferences
 
-All players have the same preferences but different budgets.
+**Inputs:**
+```python
+values = [
+    [5, 5, 5],
+    [5, 5, 5],
+    [5, 5, 5]
+]
+budgets = [30, 40, 30]
+supply  = [1, 1, 1]
+```
 
 **Allocation Matrix:**
 ```
@@ -119,7 +162,3 @@ Player 3 :  0.30  0.30  0.30
 - Each scenario tests different market dynamics: competition, equality, dominance, and fairness.
 
 ---
-
-**Author:**  
-[Your Name]  
-📁 File: `algo_EX3.py`
