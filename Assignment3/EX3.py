@@ -83,12 +83,11 @@ def compute_equilibrium(values, supply=None, budgets=None):
 
     return X, p
 
-
 # Main examples
 if __name__ == "__main__":
     supply = np.array([1, 1, 1], dtype=float)
 
-    # Example 1: Original from presentation
+    # Example 1: Original
     values1 = np.array([
         [8, 4, 2],
         [2, 6, 5]
@@ -96,35 +95,35 @@ if __name__ == "__main__":
     budgets1 = np.array([60, 40], dtype=float)
     print_result(values1, supply, budgets1, "Example 1 - Original")
 
-    # Example 2: Each player wants a different resource
+    # Example 2: Zero valuation for some resources
     values2 = np.array([
-        [10, 2, 1],
-        [1, 9, 1]
+        [10, 0, 5],
+        [0, 8, 6]
     ], dtype=float)
-    print_result(values2, supply, budgets1, "Example 2 - Distinct Preferences")
+    budgets2 = np.array([50, 50], dtype=float)
+    print_result(values2, supply, budgets2, "Example 2 - Zero Valuations")
 
-    # Example 3: Similar preferences, same budgets
+    # Example 3: Very low budgets
     values3 = np.array([
-        [5, 3, 2],
-        [4, 4, 2]
+        [4, 3, 2],
+        [5, 1, 1]
     ], dtype=float)
-    budgets3 = np.array([100, 100], dtype=float)
-    print_result(values3, supply, budgets3, "Example 3 - Overlapping Preferences")
+    budgets3 = np.array([1, 1], dtype=float)
+    print_result(values3, supply, budgets3, "Example 3 - Low Budgets")
 
-    # Example 4: One rich player
+    # Example 4: High budgets same values
     values4 = np.array([
-        [6, 6, 6],
-        [1, 5, 3],
-        [2, 2, 8]
+        [5, 3, 2],
+        [5, 3, 2],
+        [5, 3, 2]
     ], dtype=float)
-    budgets4 = np.array([200, 50, 50], dtype=float)
-    print_result(values4, supply, budgets4, "Example 4 - Wealthy Player")
+    budgets4 = np.array([10, 10, 80], dtype=float)
+    print_result(values4, supply, budgets4, "Example 4 - High Budgets Same Values")
 
-    # Example 5: Identical preferences
+    # Example 5: One player only values one resource
     values5 = np.array([
-        [5, 5, 5],
-        [5, 5, 5],
+        [0, 0, 10],
         [5, 5, 5]
     ], dtype=float)
-    budgets5 = np.array([30, 40, 30], dtype=float)
-    print_result(values5, supply, budgets5, "Example 5 - Identical Preferences")
+    budgets5 = np.array([40, 60], dtype=float)
+    print_result(values5, supply, budgets5, "Example 5 - Single Resource Preference")
