@@ -1,22 +1,19 @@
-
 # 🧮 Competitive Equilibrium Model (Logarithmic Utilities)
 
-This project implements a **logarithmic utility-based competitive equilibrium algorithm** in Python using the `cvxpy` optimization library.
+This project implements a **logarithmic utility-based competitive equilibrium model** using Python and `cvxpy`.
 
-The goal is to allocate limited resources to multiple players, each with their own preferences and budgets, in a way that maximizes the **sum of weighted log utilities**. The result reflects both **efficiency** and **fairness**.
+The model allocates limited resources among players, considering their **preferences** and **budgets**, in a way that maximizes the **sum of weighted log utilities**. This reflects a fair and efficient outcome in resource allocation.
 
 ---
 
 ## ▶️ How to Run
 
-Make sure you have `cvxpy` installed:
-
+1. Install dependencies:
 ```bash
-pip install cvxpy
+pip install numpy cvxpy
 ```
 
-Then run the script:
-
+2. Run the script:
 ```bash
 python algo_EX3.py
 ```
@@ -25,140 +22,134 @@ python algo_EX3.py
 
 ## 📊 Output Summary
 
-Below are the results for five different economic scenarios, including inputs, allocations, equilibrium prices, and player utilities.
+The script computes equilibria for five economic scenarios and displays allocations, prices, and player utilities.
 
 ---
 
-### ✅ Example 1 - Original
+### ✅ Example 1 – Original
 
 **Inputs:**
 ```python
 values = [
     [8, 4, 2],
-    [2, 6, 5],
-    [1, 3, 7]
+    [2, 6, 5]
 ]
-budgets = [60, 40, 30]
-supply  = [1, 1, 1]
+budgets = [60, 40]
 ```
 
 **Allocation Matrix:**
 ```
-Player 1 :  1.00  0.00  0.00
-Player 2 :  0.00  1.00  0.06
-Player 3 :  0.00  0.00  0.94
+Player 1 :  1.00  0.30  0.00  
+Player 2 :  0.00  0.70  1.00
 ```
 
-**Prices:** 59.9996, 38.1816, 31.8180  
-**Utilities:** 8.0000, 6.2857, 6.6000
+**Prices:** 52.1741, 26.0869, 21.7389  
+**Utilities:** 9.2000, 9.2000
+
+📌 *Despite different valuations, the market clears with equal utility.*
 
 ---
 
-### ✅ Example 2 - Distinct Preferences
+### ✅ Example 2 – Zero Valuations
 
 **Inputs:**
 ```python
 values = [
-    [10, 2, 1],
-    [1, 9, 1],
-    [1, 1, 10]
+    [10, 0, 5],
+    [0, 8, 6]
 ]
-budgets = [60, 40, 30]
-supply  = [1, 1, 1]
+budgets = [50, 50]
 ```
 
 **Allocation Matrix:**
 ```
-Player 1 :  1.00  0.00  0.00
-Player 2 :  0.00  1.00  0.00
-Player 3 :  0.00  0.00  1.00
+Player 1 :  1.00  0.00  0.17  
+Player 2 :  0.00  1.00  0.83
 ```
 
-**Prices:** 60.0000, 39.9999, 30.0001  
-**Utilities:** 10.0000, 9.0000, 10.0000
+**Prices:** 46.1538, 30.7692, 23.0769  
+**Utilities:** 10.8333, 13.0000
+
+📌 *Each player ignores resources they don't value — efficient specialization.*
 
 ---
 
-### ✅ Example 3 - Overlapping Preferences
+### ✅ Example 3 – Low Budgets
+
+**Inputs:**
+```python
+values = [
+    [4, 3, 2],
+    [5, 1, 1]
+]
+budgets = [1, 1]
+```
+
+**Allocation Matrix:**
+```
+Player 1 :  0.00  1.00  1.00  
+Player 2 :  1.00  0.00  0.00
+```
+
+**Prices:** 1.0000, 0.6000, 0.4000  
+**Utilities:** 5.0000, 5.0001
+
+📌 *Even with small budgets, players receive reasonable allocations.*
+
+---
+
+### ✅ Example 4 – High Budgets, Same Values
 
 **Inputs:**
 ```python
 values = [
     [5, 3, 2],
-    [4, 4, 2],
-    [3, 2, 5]
+    [5, 3, 2],
+    [5, 3, 2]
 ]
-budgets = [100, 100, 100]
-supply  = [1, 1, 1]
+budgets = [10, 10, 80]
 ```
 
 **Allocation Matrix:**
 ```
-Player 1 :  1.00  0.00  0.00
-Player 2 :  0.00  1.00  0.00
-Player 3 :  0.00  0.00  1.00
+Player 1 :  0.14  0.05  0.06  
+Player 2 :  0.14  0.05  0.06  
+Player 3 :  0.71  0.90  0.87
 ```
 
-**Prices:** 100.0000, 99.9996, 99.9997  
-**Utilities:** 5.0000, 4.0000, 5.0000
+**Prices:** 50.0001, 30.0001, 20.0001  
+**Utilities:** 1.0000, 1.0000, 8.0000
+
+📌 *Player 3 dominates the market due to their large budget, despite identical preferences.*
 
 ---
 
-### ✅ Example 4 - Wealthy Player
+### ✅ Example 5 – Single Resource Preference
 
 **Inputs:**
 ```python
 values = [
-    [6, 6, 6],
-    [1, 5, 3],
-    [2, 2, 8]
-]
-budgets = [200, 50, 50]
-supply  = [1, 1, 1]
-```
-
-**Allocation Matrix:**
-```
-Player 1 :  1.00  0.50  0.50
-Player 2 :  0.00  0.50  0.00
-Player 3 :  0.00  0.00  0.50
-```
-
-**Prices:** 99.9998, 99.9996, 100.0000  
-**Utilities:** 12.0000, 2.5000, 4.0000
-
----
-
-### ✅ Example 5 - Identical Preferences
-
-**Inputs:**
-```python
-values = [
-    [5, 5, 5],
-    [5, 5, 5],
+    [0, 0, 10],
     [5, 5, 5]
 ]
-budgets = [30, 40, 30]
-supply  = [1, 1, 1]
+budgets = [40, 60]
 ```
 
 **Allocation Matrix:**
 ```
-Player 1 :  0.30  0.30  0.30
-Player 2 :  0.40  0.40  0.40
-Player 3 :  0.30  0.30  0.30
+Player 1 :  0.00  0.00  1.00  
+Player 2 :  1.00  1.00  0.00
 ```
 
-**Prices:** 33.3334, 33.3334, 33.3334  
-**Utilities:** 4.5000, 5.9999, 4.5000
+**Prices:** 30.0001, 30.0001, 40.0003  
+**Utilities:** 10.0000, 10.0000
+
+📌 *Player 1 fully consumes their only valued resource. Player 2 uses the rest.*
 
 ---
 
 ## 🧠 Notes
 
-- The algorithm solves a convex optimization problem using `cvxpy`.
-- Prices are derived from the dual variables of the supply constraints.
-- Utilities are calculated as the sum of allocated value per player.
-- Each scenario tests different market dynamics: competition, equality, dominance, and fairness.
-
----
+- The model solves a **convex optimization problem** using `cvxpy`.
+- **Resource prices** are derived from the **dual values** of supply constraints.
+- The model demonstrates fairness, efficiency, and the effects of **budgets** and **preferences** in resource allocation.
