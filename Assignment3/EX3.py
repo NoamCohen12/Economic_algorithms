@@ -83,34 +83,33 @@ def compute_equilibrium(values, supply=None, budgets=None):
 
     return X, p
 
+
 # Main examples
 if __name__ == "__main__":
-    # Example 1: Original
+    supply = np.array([1, 1, 1], dtype=float)
+
+    # Example 1: Original from presentation
     values1 = np.array([
         [8, 4, 2],
-        [2, 6, 5],
-        [1, 3, 7]
+        [2, 6, 5]
     ], dtype=float)
-    supply1 = np.array([1, 1, 1], dtype=float)
-    budgets1 = np.array([60, 40, 30], dtype=float)
-    print_result(values1, supply1, budgets1, "Example 1 - Original")
+    budgets1 = np.array([60, 40], dtype=float)
+    print_result(values1, supply, budgets1, "Example 1 - Original")
 
     # Example 2: Each player wants a different resource
     values2 = np.array([
         [10, 2, 1],
-        [1, 9, 1],
-        [1, 1, 10]
+        [1, 9, 1]
     ], dtype=float)
-    print_result(values2, supply1, budgets1, "Example 2 - Distinct Preferences")
+    print_result(values2, supply, budgets1, "Example 2 - Distinct Preferences")
 
     # Example 3: Similar preferences, same budgets
     values3 = np.array([
         [5, 3, 2],
-        [4, 4, 2],
-        [3, 2, 5]
+        [4, 4, 2]
     ], dtype=float)
-    budgets3 = np.array([100, 100, 100], dtype=float)
-    print_result(values3, supply1, budgets3, "Example 3 - Overlapping Preferences")
+    budgets3 = np.array([100, 100], dtype=float)
+    print_result(values3, supply, budgets3, "Example 3 - Overlapping Preferences")
 
     # Example 4: One rich player
     values4 = np.array([
@@ -119,7 +118,7 @@ if __name__ == "__main__":
         [2, 2, 8]
     ], dtype=float)
     budgets4 = np.array([200, 50, 50], dtype=float)
-    print_result(values4, supply1, budgets4, "Example 4 - Wealthy Player")
+    print_result(values4, supply, budgets4, "Example 4 - Wealthy Player")
 
     # Example 5: Identical preferences
     values5 = np.array([
@@ -128,4 +127,4 @@ if __name__ == "__main__":
         [5, 5, 5]
     ], dtype=float)
     budgets5 = np.array([30, 40, 30], dtype=float)
-    print_result(values5, supply1, budgets5, "Example 5 - Identical Preferences")
+    print_result(values5, supply, budgets5, "Example 5 - Identical Preferences")
