@@ -35,6 +35,8 @@ values = [
     [2, 6, 5]
 ]
 budgets = [60, 40]
+supply = [1, 1, 1]
+
 ```
 
 **Allocation Matrix:**
@@ -59,6 +61,8 @@ values = [
     [0, 8, 6]
 ]
 budgets = [50, 50]
+supply = [1, 1, 1]
+
 ```
 
 **Allocation Matrix:**
@@ -83,6 +87,8 @@ values = [
     [5, 1, 1]
 ]
 budgets = [1, 1]
+supply = [1, 1, 1]
+
 ```
 
 **Allocation Matrix:**
@@ -108,6 +114,8 @@ values = [
     [5, 3, 2]
 ]
 budgets = [10, 10, 80]
+supply = [1, 1, 1]
+
 ```
 
 **Allocation Matrix:**
@@ -133,6 +141,8 @@ values = [
     [5, 5, 5]
 ]
 budgets = [40, 60]
+supply = [1, 1, 1]
+
 ```
 
 **Allocation Matrix:**
