@@ -8,15 +8,10 @@ The results below show allocation matrices, equilibrium prices, and utilities fo
 ## ✅ Example 1 - Original
 
 **Allocation Matrix (Players × Resources):**
-markdown
-Copy
-Edit
+
       R 1  R 2  R 3
 Player 1 : 1.00 0.00 0.00 Player 2 : 0.00 1.00 0.06 Player 3 : 0.00 0.00 0.94
 
-yaml
-Copy
-Edit
 
 **Resource Prices:**
 - Resource 1: 59.9996  
@@ -37,9 +32,7 @@ Each player strongly prefers a different resource.
 **Allocation Matrix:**
 Player 1 : 1.00 0.00 0.00 Player 2 : 0.00 1.00 0.00 Player 3 : 0.00 0.00 1.00
 
-yaml
-Copy
-Edit
+
 
 **Prices:** 60.0000, 39.9999, 30.0001  
 **Utilities:** 10.0000, 9.0000, 10.0000
@@ -53,9 +46,7 @@ All players want similar resources, leading to high prices.
 **Allocation Matrix:**
 Player 1 : 1.00 0.00 0.00 Player 2 : 0.00 1.00 0.00 Player 3 : 0.00 0.00 1.00
 
-yaml
-Copy
-Edit
+
 
 **Prices:** 100.0000, 99.9996, 99.9997  
 **Utilities:** 5.0000, 4.0000, 5.0000
@@ -69,9 +60,7 @@ Player 1 has much more budget than the others.
 **Allocation Matrix:**
 Player 1 : 1.00 0.50 0.50 Player 2 : 0.00 0.50 0.00 Player 3 : 0.00 0.00 0.50
 
-yaml
-Copy
-Edit
+
 
 **Prices:** 99.9998, 99.9996, 100.0000  
 **Utilities:** 12.0000, 2.5000, 4.0000
@@ -85,9 +74,7 @@ All players have equal valuations, but different budgets.
 **Allocation Matrix:**
 Player 1 : 0.30 0.30 0.30 Player 2 : 0.40 0.40 0.40 Player 3 : 0.30 0.30 0.30
 
-yaml
-Copy
-Edit
+
 
 **Prices:** 33.3334, 33.3334, 33.3334  
 **Utilities:** 4.5000, 5.9999, 4.5000
