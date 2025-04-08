@@ -14,14 +14,14 @@ It includes only the parties that passed the electoral threshold.
 |-----------------------------|-------------|----------------|
 | LIKUD                       | 1,115,336   | 32             |
 | YESH ATID                   | 847,435     | 24             |
-| ZIONIST RELIGIOUS PARTY     | 516,470     | 14             |
-| NATIONAL UNITY              | 432,482     | 12             |
+| ZUIONOT AND OZMA            | 516,470     | 14             |
+| "MAHNE MMLAHTI              | 432,482     | 12             |
 | SHAS                        | 392,964     | 11             |
 | UNITED TORAH JUDAISM        | 280,194     | 7              |
 | YISRAEL BEITEINU            | 213,687     | 6              |
 | UNITED ARAB LIST            | 194,047     | 5              |
 | HADASH–TA'AL                | 178,735     | 5              |
-| LABOR                       | 175,992     | 4              |
+| HAAVODA                     | 175,992     | 4              |
 
 📊 Source: [Israel Central Elections Committee](https://votes25.bechirot.gov.il/)
 
