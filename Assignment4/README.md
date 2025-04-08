@@ -27,6 +27,23 @@ It includes only the parties that passed the electoral threshold.
 
 ---
 
+## 📊 Original vs Huntington–Hill method
+
+| Party                   | Original | New | Diff |
+|------------------------|----------|-----|------|
+| LIKUD                  | 32       | 31  | -1   |
+| YESH ATID              | 24       | 23  | -1   |
+| ZUIONOT AND OZMA       | 14       | 14  | +0   |
+| MAHNE MMLAHTI          | 12       | 12  | +0   |
+| SHAS                   | 11       | 11  | +0   |
+| UNITED TORAH JUDAISM   | 7        | 8   | +1   |
+| YISRAEL BEITEINU       | 6        | 6   | +0   |
+| UNITED ARAB LIST       | 5        | 5   | +0   |
+| HADASH–TA'AL           | 5        | 5   | +0   |
+| HAAVODA                | 4        | 5   | +1   |
+
+---
+
 ## 🧪 Test Case Examples
 
 The code includes built-in test cases to validate the correctness of the algorithm.
