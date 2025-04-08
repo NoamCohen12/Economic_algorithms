@@ -6,7 +6,8 @@ def huntington_hill_allocation(
         votes: dict[str, int],
         total_seats: int,
         checkY=False,
-        Y=0
+        Y=0,
+        test=False
 ) -> dict[str, int]:
     """
      Allocate seats using the Huntington–Hill method.
@@ -14,7 +15,7 @@ def huntington_hill_allocation(
      based on the party with the highest priority.
      """
     # Any party get one seat in the beginning because the quota of any party without seats is infinite.
-    # example Licod : 1
+    # example LIKUD : 1
     seats = {party: 1 for party in parties}
     if checkY:
         print(f"Using {Y} ")
@@ -35,7 +36,13 @@ def huntington_hill_allocation(
         max_party = max(priorities, key=priorities.get)
         # give to the party with max priorities one more seat
         seats[max_party] += 1
-
+        if test:
+            print(f"\n--- Round {sum(seats.values()) - len(parties) + 1} ---")
+            print(f"Current seat distribution: {seats}")
+            print("Priorities:")
+            for p in priorities:
+                print(f"{p}: {priorities[p]:.2f}")
+            print(f"=> {max_party} gets a seat (now has {seats[max_party]})")
     return seats
 
 
@@ -71,11 +78,52 @@ def print_comparison(
         print(f"{party:<25} {original:<10} {new:<10} {diff:<+10}")
 
 
+def test_huntington_hill_allocation() -> None:
+    """
+    Test the huntington_hill_allocation function.
+    """
+    print("\n--- Testing Huntington-Hill Allocation ---")
+    print("Test case 1: Basic test with 3 parties and 10 seats")
+    parties = ["A", "B", "C"]
+    votes1 = {"A": 100, "B": 200, "C": 300}
+    total_seats = 10
+    expected_allocation1 = {"A": 2, "B": 3, "C": 5}
+    allocation1 = huntington_hill_allocation(parties, votes1, total_seats)
+    assert allocation1 == expected_allocation1, f"Expected {expected_allocation1}, but got {allocation1}"
+
+    print("Test case 2: party with little votes")
+    votes2 = {"A": 100, "B": 200, "C": 1}
+    expected_allocation2 = {"A": 3, "B": 6, "C": 1}
+    allocation2 = huntington_hill_allocation(parties, votes2, total_seats)
+    assert allocation2 == expected_allocation2, f"Expected {expected_allocation2}, but got {allocation2}"
+
+    print("Test case 3: party with many votes")
+    votes3 = {"A": 100, "B": 200, "C": 10000}
+    expected_allocation3 = {"A": 1, "B": 1, "C": 8}
+    allocation3 = huntington_hill_allocation(parties, votes3, total_seats)
+    assert allocation3 == expected_allocation3, f"Expected {expected_allocation3}, but got {allocation3}"
+
+    print("Test case 4: party with small difference in votes")
+    parties4 = ["A", "B"]
+    votes4 = {"A": 100, "B": 101}
+    expected_allocation4 = {"A": 3, "B": 3}
+    total_seats4 = 6
+    allocation4 = huntington_hill_allocation(parties4, votes4, total_seats4)
+    assert allocation4 == expected_allocation4, f"Expected {expected_allocation4}, but got {allocation4}"
+
+    print("Test case 5: 2 parties, party A has twice the votes of party B")
+    parties5 = ["A", "B"]
+    votes5 = {"A": 100, "B": 50}
+    expected_allocation5 = {"A": 4, "B": 2}
+    total_seats5 = 6
+    allocation5 = huntington_hill_allocation(parties5, votes5, total_seats5)
+    assert allocation5 == expected_allocation5, f"Expected {expected_allocation5}, but got {allocation5}"
+
+
 if __name__ == "__main__":
     parties = [row[0] for row in data]
     votes = {row[0]: row[1] for row in data}
     total_seats = 120
-
     original_seats = {row[0]: row[2] for row in data}
 
     allocation = huntington_hill_allocation(parties, votes, total_seats, checkY=False)
@@ -84,22 +132,4 @@ if __name__ == "__main__":
     # for party in allocation:
     #     print(f"{party} get {original_seats[party]} seats in the original"
     #           f" allocation and {allocation[party]} seats in the new allocation")
-
-
-    Y = 0.000
-    step = 0.001
-    last_equal_Y = 0.000
-
-    while True:
-        new_allocation = huntington_hill_allocation(
-            parties, votes, total_seats, checkY=True, Y=Y
-        )
-        if new_allocation != original_seats:
-            print(f"{Y} is the Y that changed the allocation")
-            break
-        last_equal_Y = Y
-        Y += step
-
-
-
-
+    test_huntington_hill_allocation()
