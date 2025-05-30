@@ -42,4 +42,3 @@ There is no need to break ties. Hence, the example demonstrates **non-monotonici
 
 ---
 
-This example can be used in classroom presentations to illustrate the limitations of Rule X in satisfying monotonicity.

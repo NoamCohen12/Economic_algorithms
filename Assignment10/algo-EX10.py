@@ -1,7 +1,7 @@
 from abcvoting.preferences import Profile
 
 
-def rule_x_per_definition(profile, k):
+def Equal_Shares(profile, k):
     num_voters = len(profile)
     budget = [1.0 / k] * num_voters
     committee = set()
@@ -70,11 +70,11 @@ if __name__ == "__main__":
     profile.add_voter({3})
 
     print("\n=== Committee of size 2 ===")
-    committee2 = rule_x_per_definition(profile, 2)
+    committee2 = Equal_Shares(profile, 2)
     print(f"\nCommittee of size 2: {committee2}")
 
     print("\n=== Committee of size 3 ===")
-    committee3 = rule_x_per_definition(profile, 3)
+    committee3 = Equal_Shares(profile, 3)
     if len(committee3) == 0:
         print("No committee could be formed for k=3.")
     else:
