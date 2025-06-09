@@ -3,13 +3,13 @@ from abcvoting.preferences import Profile
 
 def Equal_Shares(profile, k):
     num_voters = len(profile)
-    budget = [1.0 / k] * num_voters
+    budget = [k / num_voters] * num_voters
     committee = set()
     candidates = set(range(profile.num_cand))
     print("\n=== Election Profile ===")
     print(profile)
     print(f"\n--- Running Rule X for k={k}, n={num_voters} ---")
-    print(f"• Initial budget per voter = k/n = {round(1.0 / k, 3)}")
+    print(f"• Initial budget per voter = k/n = {round(k / num_voters, 3)}")
     print(f"• Total voters: {num_voters}, candidates: {profile.num_cand}")
     print(f"• Budgets at start: {[round(b, 3) for b in budget]}")
 
@@ -64,10 +64,12 @@ def IsMonotonic(result_k2: set, result_k3: set):
 
 if __name__ == "__main__":
     profile = Profile(num_cand=4)
-    profile.add_voter({0, 1})
-    profile.add_voter({1})
-    profile.add_voter({2})
-    profile.add_voter({3})
+
+    profile.add_voter({3})  # בוחר 0
+    profile.add_voter({0, 2})  # בוחר 1
+    profile.add_voter({1, 2, 3})  # בוחר 2
+    profile.add_voter({0, 1})  # בוחר 3
+
 
     print("\n=== Committee of size 2 ===")
     committee2 = Equal_Shares(profile, 2)
